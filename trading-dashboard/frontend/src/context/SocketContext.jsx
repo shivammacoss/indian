@@ -20,7 +20,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     // Connect to socket server
-    socketService.connect(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5001');
+    socketService.connect(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000');
 
     // Connection status listeners
     const unsubConnected = socketService.on('connected', () => {

@@ -9,7 +9,7 @@ class SocketService {
     this.maxReconnectAttempts = 10;
   }
 
-  connect(url = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5001') {
+  connect(url = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000') {
     if (this.socket && this.isConnected) {
       console.log('[Socket] Already connected');
       return this.socket;

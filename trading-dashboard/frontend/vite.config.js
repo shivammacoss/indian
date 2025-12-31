@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
       port: 3001,
       proxy: {
         '/api': {
-          target: env.VITE_SOCKET_URL || 'http://localhost:5001',
+          target: env.VITE_SOCKET_URL || 'http://localhost:5000',
           changeOrigin: true
         }
       }

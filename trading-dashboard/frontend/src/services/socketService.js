@@ -15,7 +15,7 @@ class SocketService {
     const token = localStorage.getItem('token')
     if (!token) return null
 
-    const SOCKET_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5001'
+    const SOCKET_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'
 
     this.socket = io(SOCKET_URL, {
       auth: { token },
