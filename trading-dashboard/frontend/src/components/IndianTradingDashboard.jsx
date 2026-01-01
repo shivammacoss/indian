@@ -278,7 +278,7 @@ const IndianTradingDashboard = () => {
     }
     
     // Auto-subscribe to live data for watchlist tokens when Kite is authenticated
-    if (kiteAuth && instruments.length > 0) {
+    if (kiteAuth && instruments.length > 0 && isStreaming) {
       const subscribeInstruments = instruments.slice(0, 50)
       const tokens = subscribeInstruments.map(i => parseInt(i.token)).filter(t => t && !isNaN(t))
       const instrumentsInfo = subscribeInstruments.map(i => ({ token: parseInt(i.token), symbol: i.symbol, exchange: i.exchange }))
@@ -286,14 +286,14 @@ const IndianTradingDashboard = () => {
       if (tokens.length > 0) {
         console.log(`[Live] Auto-subscribing to ${tokens.length} ${segment} tokens...`)
         
-        // Subscribe via Socket.IO directly to wesocket_zerodha-kite
+        // Subscribe via Socket.IO directly to backend
         if (socketRef.current?.connected) {
           socketRef.current.emit('setSubscriptions', tokens)
           console.log(`[Live] Sent setSubscriptions via Socket.IO for ${tokens.length} tokens`)
         }
       }
     }
-  }, [segment, instrumentType, searchQuery, instrumentsLoaded, allInstruments, kiteAuth])
+  }, [segment, instrumentType, searchQuery, instrumentsLoaded, allInstruments, kiteAuth, isStreaming])
 
   // Fetch expiries for F&O
   useEffect(() => {
