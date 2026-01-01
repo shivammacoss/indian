@@ -87,7 +87,7 @@ const IndianTradingDashboard = () => {
   // Setup Socket.IO for live streaming - connect directly to wesocket_zerodha-kite project
   useEffect(() => {
     try {
-      const zerodhaWsUrl = import.meta.env.VITE_ZERODHA_WS_URL || 'http://localhost:7001'
+      const zerodhaWsUrl = import.meta.env.VITE_ZERODHA_WS_URL || window.location.origin
       socketRef.current = io(zerodhaWsUrl, {
         transports: ['websocket', 'polling'],
         reconnection: true,
