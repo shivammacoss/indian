@@ -3,13 +3,14 @@ const MetaApiService = require('./MetaApiService');
 const tradeEngine = require('./TradeEngine');
 const TradingCharge = require('../models/TradingCharge');
 const jwt = require('jsonwebtoken');
+const createZerodhaTickerBridge = require('./zerodhaTicker');
 
 class SocketManager {
   constructor(server, config = {}) {
     // Optimized Socket.IO for low latency
     this.io = new Server(server, {
       cors: {
-        origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173', 'http://127.0.0.1:5173'],
+        origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', 'https://stockpip.com', 'http://stockpip.com'],
         methods: ['GET', 'POST'],
         credentials: true
       },
@@ -29,7 +30,15 @@ class SocketManager {
     this.throttleMs = 50; // Minimum 50ms between emissions per symbol (20 updates/sec max)
     this.spreads = {}; // Cached spreads from admin config
 
-    // Indian market WebSocket is handled by wesocket_zerodha-kite project on port 7001
+    // Initialize Zerodha Ticker Bridge for Indian market
+    this.zerodhaBridge = null;
+    if (process.env.KITE_API_KEY) {
+      this.zerodhaBridge = createZerodhaTickerBridge({
+        io: this.io,
+        apiKey: process.env.KITE_API_KEY
+      });
+      console.log('[SocketManager] Zerodha Ticker Bridge initialized');
+    }
 
     this.setupSocketHandlers();
     this.loadSpreads(); // Load spreads on startup
@@ -401,8 +410,25 @@ class SocketManager {
     this.handlePriceUpdate(priceData);
   }
 
-  // Indian market WebSocket is handled by wesocket_zerodha-kite project on port 7001
-  // No Kite ticker setup needed here
+  /**
+   * Start Zerodha ticker with access token
+   */
+  startZerodhaTicker(accessToken) {
+    if (this.zerodhaBridge && accessToken) {
+      this.zerodhaBridge.start(accessToken);
+      console.log('[SocketManager] Zerodha Ticker started');
+    }
+  }
+
+  /**
+   * Get Zerodha bridge status
+   */
+  getZerodhaStatus() {
+    if (this.zerodhaBridge) {
+      return this.zerodhaBridge.getStatus();
+    }
+    return { tickerConnected: false, hasAccessToken: false };
+  }
 }
 
 module.exports = SocketManager;

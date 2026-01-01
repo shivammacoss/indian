@@ -68,14 +68,11 @@ router.get('/callback', async (req, res) => {
 
     await kiteService.handleCallback(request_token);
     
-    // Forward access token to wesocket_zerodha-kite project
-    const wsServiceUrl = process.env.ZERODHA_WS_URL || 'http://localhost:7001';
-    try {
-      const axios = require('axios');
-      await axios.post(`${wsServiceUrl}/auth/set-token`, { token: kiteService.accessToken });
-      console.log('[Kite Callback] Forwarded access token to ws-service');
-    } catch (wsErr) {
-      console.log('[Kite Callback] Could not forward token to ws-service:', wsErr.message);
+    // Start Zerodha ticker in SocketManager
+    const socketManager = req.app.get('socketManager');
+    if (socketManager && kiteService.accessToken) {
+      socketManager.startZerodhaTicker(kiteService.accessToken);
+      console.log('[Kite Callback] Started Zerodha ticker via SocketManager');
     }
     
     // Redirect to frontend
