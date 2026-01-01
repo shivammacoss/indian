@@ -16,7 +16,7 @@ const KiteSettings = () => {
 
   const fetchKiteStatus = async () => {
     try {
-      const res = await axios.get('/api/kite/status', getAuthHeader())
+      const res = await axios.get('/api/kite/status')
       setKiteStatus({
         authenticated: res.data.authenticated,
         apiKey: res.data.apiKey || '',
@@ -46,7 +46,7 @@ const KiteSettings = () => {
     // Poll for authentication status
     const checkAuth = setInterval(async () => {
       try {
-        const res = await axios.get('/api/kite/status', getAuthHeader())
+        const res = await axios.get('/api/kite/status')
         if (res.data.authenticated) {
           clearInterval(checkAuth)
           setConnecting(false)

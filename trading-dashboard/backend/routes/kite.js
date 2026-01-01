@@ -86,8 +86,8 @@ router.get('/callback', async (req, res) => {
 
 // @route   GET /api/kite/status
 // @desc    Check Kite authentication status
-// @access  Private
-router.get('/status', protect, (req, res) => {
+// @access  Public (no auth needed - just returns connection status)
+router.get('/status', (req, res) => {
   res.json({
     success: true,
     authenticated: kiteService.isAuthenticated(),
