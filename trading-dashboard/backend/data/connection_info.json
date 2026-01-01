@@ -1,6 +1,6 @@
 {
-  "host": "localhost",
+  "host": "ac-kdg3clp-shard-00-01.kosshdz.mongodb.net",
   "port": 27017,
-  "name": "bull4x_trading",
-  "timestamp": "2025-12-31T12:47:50.646Z"
+  "name": "test",
+  "timestamp": "2025-12-31T23:36:12.254Z"
 }

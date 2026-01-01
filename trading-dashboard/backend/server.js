@@ -105,7 +105,7 @@ app.use('/api/kite', kiteRoutes);
 app.get('/api/health', (req, res) => {
   res.json({
     success: true,
-    message: 'Hcfinvest Trading API is running',
+    message: 'Stockpip Trading API is running',
     timestamp: new Date().toISOString()
   });
 });
@@ -141,7 +141,7 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`
   ╔═══════════════════════════════════════════════╗
-  ║     Hcfinvest Trading API Server              ║
+  ║     Stockpip Trading API Server              ║
   ║     Running on port ${PORT}                       ║
   ║     Environment: ${process.env.NODE_ENV || 'development'}              ║
   ║     WebSocket: Enabled (Socket.IO)            ║

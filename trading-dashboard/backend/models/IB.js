@@ -104,7 +104,7 @@ ibSchema.pre('save', async function(next) {
 });
 
 // Get referral link
-ibSchema.methods.getReferralLink = function(baseUrl = 'https://hcfinvest.com') {
+ibSchema.methods.getReferralLink = function(baseUrl = 'https://Stockpip.com') {
   return `${baseUrl}/register?ref=${this.ibId}`;
 };
 

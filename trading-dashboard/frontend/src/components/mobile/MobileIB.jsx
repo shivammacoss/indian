@@ -73,7 +73,7 @@ const MobileIB = ({ onBack }) => {
 
   const handleShare = () => {
     if (navigator.share) {
-      navigator.share({ title: 'Join Hcfinvest', url: referralLink })
+      navigator.share({ title: 'Join Stockpip', url: referralLink })
     }
   }
 

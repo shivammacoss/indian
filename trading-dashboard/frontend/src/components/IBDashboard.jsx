@@ -182,7 +182,7 @@ const IBDashboard = () => {
             <button
               onClick={() => {
                 if (navigator.share) {
-                  navigator.share({ title: 'Join Hcfinvest', url: referralLink })
+                  navigator.share({ title: 'Join Stockpip', url: referralLink })
                 }
               }}
               className="py-2 px-4 rounded-xl bg-white/20 hover:bg-white/30 text-white"

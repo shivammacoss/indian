@@ -24,10 +24,10 @@ const seedAdmin = async () => {
     
     // Create admin user
     const admin = await User.create({
-      email: 'admin@hcfinvest.com',
+      email: 'admin@Stockpip.com',
       password: 'admin123456',
       firstName: 'Admin',
-      lastName: 'Hcfinvest',
+      lastName: 'Stockpip',
       role: 'admin',
       isActive: true,
       isVerified: true,
@@ -35,7 +35,7 @@ const seedAdmin = async () => {
     });
     
     console.log('Admin user created successfully!');
-    console.log('Email: admin@hcfinvest.com');
+    console.log('Email: admin@Stockpip.com');
     console.log('Password: admin123456');
     console.log('\nPlease change the password after first login!');
     

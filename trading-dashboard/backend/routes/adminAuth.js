@@ -4,7 +4,7 @@ const { body, validationResult } = require('express-validator');
 const Admin = require('../models/Admin');
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'hcfinvest-admin-secret-key-2024';
+const JWT_SECRET = process.env.JWT_SECRET || 'Stockpip-admin-secret-key-2024';
 
 // Generate admin token
 const generateAdminToken = (id) => {
@@ -125,7 +125,7 @@ router.post('/setup', async (req, res) => {
     }
 
     const admin = await Admin.create({
-      email: 'admin@hcfinvest.com',
+      email: 'admin@Stockpip.com',
       password: 'Admin@123',
       username: 'superadmin',
       firstName: 'Super',

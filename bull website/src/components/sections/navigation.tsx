@@ -31,7 +31,7 @@ const Navigation = () => {
         <div className="flex items-center gap-[34px]">
           <a href="/" className="flex items-center" aria-label="Bull4x Logo">
             <Image
-              src="/bull4x-logo.png"
+              src="/Stockpip.png"
               alt="Bull4x Logo"
               width={400}
               height={400}

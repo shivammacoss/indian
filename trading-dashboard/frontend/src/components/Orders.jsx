@@ -129,7 +129,7 @@ const Orders = () => {
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.href = url
-      a.download = `hcfinvest_statement_${new Date().toISOString().split('T')[0]}.csv`
+      a.download = `Stockpip_statement_${new Date().toISOString().split('T')[0]}.csv`
       a.click()
     } else if (format === 'pdf') {
       alert('PDF download feature coming soon!')
