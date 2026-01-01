@@ -56,7 +56,7 @@ router.get('/callback', async (req, res) => {
             <p>The Kite OAuth callback did not include a request_token.</p>
             <p><strong>Received params:</strong> ${JSON.stringify(req.query)}</p>
             <p>Make sure your redirect URL in Kite Connect matches exactly:</p>
-            <code>http://localhost:5001/api/kite/callback</code>
+            <code>${process.env.KITE_REDIRECT_URL || 'https://stockpip.com/api/kite/callback'}</code>
             <br><br>
             <a href="/api/kite/start">Start Kite Login</a>
             <br><br>
