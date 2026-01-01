@@ -20,7 +20,8 @@ import {
   Headphones,
   Layers,
   Shield,
-  Trophy
+  Trophy,
+  Wifi
 } from 'lucide-react'
 import { useTheme } from '../../context/ThemeContext'
 
@@ -49,6 +50,7 @@ const AdminLayout = ({ children, activeSection, setActiveSection }) => {
     { id: 'accounttypes', label: 'Account Types', icon: Layers, path: '/admin/accounttypes' },
     { id: 'kyc', label: 'KYC Verification', icon: Shield, path: '/admin/kyc' },
     { id: 'support', label: 'Support Tickets', icon: Headphones, path: '/admin/support' },
+    { id: 'kite', label: 'Kite Connect', icon: Wifi, path: '/admin/kite' },
   ]
 
   const handleNavigation = (item) => {

@@ -13,6 +13,7 @@ import SupportManagement from './SupportManagement'
 import AccountTypeManagement from './AccountTypeManagement'
 import KycManagement from './KycManagement'
 import AdminChallenges from './AdminChallenges'
+import KiteSettings from './KiteSettings'
 
 const AdminPanel = ({ initialSection = 'overview' }) => {
   const [activeSection, setActiveSection] = useState(initialSection)
@@ -45,6 +46,8 @@ const AdminPanel = ({ initialSection = 'overview' }) => {
         return <KycManagement />
       case 'propfirm':
         return <AdminChallenges />
+      case 'kite':
+        return <KiteSettings />
       default:
         return <OverviewDashboard />
     }

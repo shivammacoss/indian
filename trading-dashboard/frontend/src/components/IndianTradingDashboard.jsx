@@ -578,9 +578,7 @@ const IndianTradingDashboard = () => {
           {kiteAuth ? (
             <span className="flex items-center gap-1 text-xs text-green-500"><Wifi size={12} /> Kite Connected</span>
           ) : (
-            <button onClick={handleKiteLogin} className="flex items-center gap-1 text-xs text-orange-500 hover:underline">
-              <ExternalLink size={12} /> Connect Kite
-            </button>
+            <span className="flex items-center gap-1 text-xs text-gray-500"><WifiOff size={12} /> Kite Offline</span>
           )}
         </div>
         <div className="flex items-center gap-4">
