@@ -10,7 +10,7 @@ class KiteService {
   constructor() {
     this.apiKey = process.env.KITE_API_KEY;
     this.apiSecret = process.env.KITE_API_SECRET;
-    this.redirectUrl = process.env.KITE_REDIRECT_URL || 'http://localhost:5001/api/kite/callback';
+    this.redirectUrl = process.env.KITE_REDIRECT_URL || 'http://localhost:5000/api/kite/callback';
     
     if (!this.apiKey) {
       console.error('[KiteService] ERROR: KITE_API_KEY not found in environment variables!');

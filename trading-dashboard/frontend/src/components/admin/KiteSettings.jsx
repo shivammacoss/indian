@@ -40,8 +40,9 @@ const KiteSettings = () => {
 
   const handleConnectKite = () => {
     setConnecting(true)
-    // Open Kite login in new window
-    const loginWindow = window.open('/api/kite/start', '_blank', 'width=600,height=700')
+    // Open Kite login in new window - use full backend URL to avoid proxy issues
+    const backendUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'
+    const loginWindow = window.open(`${backendUrl}/api/kite/start`, '_blank', 'width=600,height=700')
     
     // Poll for authentication status
     const checkAuth = setInterval(async () => {

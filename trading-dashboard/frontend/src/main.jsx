@@ -77,6 +77,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               <Route path="/admin/accounttypes" element={<AdminProtectedRoute><AdminPanel initialSection="accounttypes" /></AdminProtectedRoute>} />
               <Route path="/admin/kyc" element={<AdminProtectedRoute><AdminPanel initialSection="kyc" /></AdminProtectedRoute>} />
               <Route path="/admin/support" element={<AdminProtectedRoute><AdminPanel initialSection="support" /></AdminProtectedRoute>} />
+              <Route path="/admin/kite" element={<AdminProtectedRoute><AdminPanel initialSection="kite" /></AdminProtectedRoute>} />
+              <Route path="/admin/indiancharges" element={<AdminProtectedRoute><AdminPanel initialSection="indiancharges" /></AdminProtectedRoute>} />
               
               {/* Default redirect */}
               <Route path="/" element={<Navigate to="/login" replace />} />
